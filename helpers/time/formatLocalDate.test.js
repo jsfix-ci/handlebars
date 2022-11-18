@@ -19,14 +19,20 @@ describe('Filters: ' + filterName, function () {
   it('formats with default format', function () {
     var date = (new Date(0)).toString();
 
-    expect(filter(date)).to.equal(dateFormat(date, 'M/D/YYYY [at] h:mm a'));
+    expect(filter(date)).to.equal(/* TODO: JSFIX could not patch the breaking change:
+    now functions don't accept string arguments, but only numbers or dates.  
+    Suggested fix: The input string should now be parsed beforehand. Use parse or parseISO (if you’re using ISO 8601) to parse your strings. */
+    dateFormat(date, 'M/D/YYYY [at] h:mm a'));
   });
 
   it('formats with given format', function () {
     var format = 'MM/DD/YYYY',
       date = (new Date(0)).toString();
 
-    expect(filter(date, format)).to.equal(dateFormat(date, format));
+    expect(filter(date, format)).to.equal(/* TODO: JSFIX could not patch the breaking change:
+    now functions don't accept string arguments, but only numbers or dates.  
+    Suggested fix: The input string should now be parsed beforehand. Use parse or parseISO (if you’re using ISO 8601) to parse your strings. */
+    dateFormat(date, format));
   });
 
   it('if date is set to "now," uses current time', function () {
