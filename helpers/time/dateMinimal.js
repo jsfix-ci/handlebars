@@ -1,10 +1,10 @@
 'use strict';
 const parse = require('date-fns/parse'),
-  isValid = require('date-fns/is_valid'),
-  differenceInMinutes = require('date-fns/difference_in_minutes'),
+  isValid = require('date-fns/isValid'),
+  differenceInMinutes = require('date-fns/differenceInMinutes'),
   distanceInWordsStrict = require('date-fns/distance_in_words_strict'),
-  subDays = require('date-fns/sub_days'),
-  isSameDay = require('date-fns/is_same_day'),
+  subDays = require('date-fns/subDays'),
+  isSameDay = require('date-fns/isSameDay'),
   format = require('date-fns/format');
 
 /**
