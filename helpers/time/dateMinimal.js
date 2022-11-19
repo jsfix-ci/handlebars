@@ -1,11 +1,6 @@
 'use strict';
-const parse = require('date-fns/parse'),
-  isValid = require('date-fns/is_valid'),
-  differenceInMinutes = require('date-fns/difference_in_minutes'),
-  distanceInWordsStrict = require('date-fns/distance_in_words_strict'),
-  subDays = require('date-fns/sub_days'),
-  isSameDay = require('date-fns/is_same_day'),
-  format = require('date-fns/format');
+const formatDistanceStrict = require('date-fns/formatDistanceStrict');
+const parse = require('date-fns/parse'), isValid = require('date-fns/isValid'), differenceInMinutes = require('date-fns/differenceInMinutes'), subDays = require('date-fns/subDays'), isSameDay = require('date-fns/isSameDay'), format = require('date-fns/format');
 
 /**
  * generate display date (without time), based on a relative format
@@ -50,9 +45,9 @@ module.exports = function (datetime) {
   if (isValid(date)) {
     // articles < 30 min old should display 'x seconds ago / x minutes ago'
     if (differenceInMinutes(now, date) < 1) {
-      return distanceInWordsStrict(now, date, { unit: 's', addSuffix: true, locale: locale });
+      return formatDistanceStrict(date, now, { unit: 's', addSuffix: true, locale: locale });
     } else if (differenceInMinutes(now, date) < 30) {
-      return distanceInWordsStrict(now, date, { unit: 'm', addSuffix: true, locale: locale });
+      return formatDistanceStrict(date, now, { unit: 'm', addSuffix: true, locale: locale });
     } else if (isSameDay(now, date)) {
       return format(date, 'h:mm aa');
     } else if (isSameDay(yesterday, date)) {

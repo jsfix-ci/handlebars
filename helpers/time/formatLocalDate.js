@@ -13,5 +13,10 @@ module.exports = function (date, format) {
   format = format || defaultFormat;
   date = date === 'now' ? new Date() : date;
 
-  return dateFormat(date, format);
+  return (
+    /* TODO: JSFIX could not patch the breaking change:
+    now functions don't accept string arguments, but only numbers or dates.  
+    Suggested fix: The input string should now be parsed beforehand. Use parse or parseISO (if you’re using ISO 8601) to parse your strings. */
+    dateFormat(date, format)
+  );
 };
